@@ -28,6 +28,22 @@
   animation: scaleIn 0.25s ease-out forwards;
 }
 
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.img-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(20, 25, 60, 0.8) 25%,
+    rgba(45, 52, 90, 0.8) 50%,
+    rgba(20, 25, 60, 0.8) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+}
+
 .glass-card {
   background: rgba(15, 20, 60, 0.6);
   backdrop-filter: blur(12px);

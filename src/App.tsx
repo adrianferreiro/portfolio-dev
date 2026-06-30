@@ -147,8 +147,7 @@ export default function App() {
       {selectedProject && (
         <Modal onClose={() => setSelectedProject(null)}>
           <ScreenshotGallery
-            projectId={selectedProject.id}
-            projectName={selectedProject.name}
+            project={selectedProject}
             onClose={() => setSelectedProject(null)}
           />
         </Modal>

@@ -1,23 +1,21 @@
 import { useState, useEffect, useCallback } from 'react'
+import type { Project } from '../../../types'
 import { useProjectScreenshots } from '../hooks/useProjectScreenshots'
 import { Spinner } from '../../../shared/components/Spinner'
 
 interface ScreenshotGalleryProps {
-  projectId: string
-  projectName: string
+  project: Project
   onClose: () => void
 }
 
-export function ScreenshotGallery({ projectId, projectName, onClose }: ScreenshotGalleryProps) {
-  const { screenshots, loading, error } = useProjectScreenshots(projectId)
+export function ScreenshotGallery({ project, onClose }: ScreenshotGalleryProps) {
+  const { screenshots, loading, error } = useProjectScreenshots(project.id)
   const [current, setCurrent] = useState(0)
 
   const prev = useCallback(() => setCurrent(i => (i - 1 + screenshots.length) % screenshots.length), [screenshots.length])
   const next = useCallback(() => setCurrent(i => (i + 1) % screenshots.length), [screenshots.length])
 
-  useEffect(() => {
-    setCurrent(0)
-  }, [projectId])
+  useEffect(() => { setCurrent(0) }, [project.id])
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -30,62 +28,102 @@ export function ScreenshotGallery({ projectId, projectName, onClose }: Screensho
 
   return (
     <div
-      className="flex flex-col rounded-2xl overflow-hidden"
-      style={{ background: 'rgba(8, 10, 30, 0.95)', border: '1px solid rgba(129, 140, 248, 0.2)' }}
+      className="flex flex-col md:flex-row rounded-2xl overflow-hidden max-h-[90vh]"
+      style={{ background: 'rgba(8, 10, 30, 0.97)', border: '1px solid rgba(129, 140, 248, 0.2)' }}
     >
-      {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-indigo-500/10">
-        <div>
-          <h2 className="text-lg font-semibold text-slate-100">{projectName}</h2>
-          {screenshots.length > 0 && (
-            <p className="text-slate-500 text-sm mt-0.5">
-              {current + 1} / {screenshots.length}
-            </p>
-          )}
+      {/* ── Left panel: project info ── */}
+      <div className="md:w-72 lg:w-80 shrink-0 flex flex-col border-b md:border-b-0 md:border-r border-indigo-500/10 overflow-y-auto">
+        <div className="p-5 flex-1">
+          {/* Close button (mobile top-right) */}
+          <div className="flex items-start justify-between gap-3 mb-4 md:hidden">
+            <span className="text-xs text-slate-500 border border-slate-700/50 px-2.5 py-1 rounded-full">
+              {project.category}
+            </span>
+            <button
+              onClick={onClose}
+              className="text-slate-500 hover:text-slate-200 transition-colors p-1 rounded-lg hover:bg-white/5 shrink-0"
+              aria-label="Cerrar"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Category + year (desktop) */}
+          <div className="hidden md:flex items-center justify-between mb-4">
+            <span className="text-xs text-slate-500 border border-slate-700/50 px-2.5 py-1 rounded-full">
+              {project.category}
+            </span>
+            <span className="text-slate-600 text-xs font-mono">{project.year}</span>
+          </div>
+
+          <h2 className="text-xl font-bold text-slate-100 mb-3 leading-snug">{project.name}</h2>
+
+          <p className="text-slate-400 text-sm leading-relaxed mb-5">{project.description}</p>
+
+          <div className="flex flex-wrap gap-1.5">
+            {project.tech.map(t => (
+              <span
+                key={t}
+                className="text-xs text-slate-500 bg-slate-800/60 border border-slate-700/50 px-2 py-0.5 rounded-md font-mono"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
         </div>
-        <button
-          onClick={onClose}
-          className="text-slate-500 hover:text-slate-200 transition-colors p-1.5 rounded-lg hover:bg-white/5"
-          aria-label="Cerrar"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+
+        {/* Counter (desktop bottom) */}
+        {screenshots.length > 0 && (
+          <div className="hidden md:flex items-center justify-between px-5 py-3 border-t border-indigo-500/10">
+            <p className="text-slate-600 text-xs">
+              {current + 1} / {screenshots.length} capturas
+            </p>
+            <button
+              onClick={onClose}
+              className="text-slate-500 hover:text-slate-200 transition-colors p-1.5 rounded-lg hover:bg-white/5"
+              aria-label="Cerrar"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
 
-      {/* Main content */}
-      <div className="flex-1 min-h-0">
+      {/* ── Right panel: gallery ── */}
+      <div className="flex-1 flex flex-col min-w-0 min-h-0">
         {loading && (
-          <div className="flex justify-center items-center h-80">
+          <div className="flex justify-center items-center flex-1 h-64">
             <Spinner size="lg" />
           </div>
         )}
 
         {error && (
-          <div className="flex justify-center items-center h-80">
-            <p className="text-red-400">{error}</p>
+          <div className="flex justify-center items-center flex-1 h-64">
+            <p className="text-red-400 text-sm">{error}</p>
           </div>
         )}
 
         {!loading && !error && screenshots.length === 0 && (
-          <div className="flex justify-center items-center h-80">
-            <p className="text-slate-500">No hay capturas disponibles.</p>
+          <div className="flex justify-center items-center flex-1 h-64">
+            <p className="text-slate-500 text-sm">No hay capturas disponibles.</p>
           </div>
         )}
 
         {!loading && screenshots.length > 0 && (
           <>
             {/* Main image */}
-            <div className="relative group/img bg-black/40" style={{ height: '420px' }}>
+            <div className="relative group/img bg-black/40 flex-1 min-h-0" style={{ minHeight: '300px' }}>
               <img
                 key={screenshots[current].id}
                 src={screenshots[current].url}
                 alt={screenshots[current].caption ?? `Captura ${current + 1}`}
-                className="w-full h-full object-cover animate-fade-in"
+                className="w-full h-full object-contain animate-fade-in"
               />
 
-              {/* Nav arrows */}
               {screenshots.length > 1 && (
                 <>
                   <button
@@ -113,9 +151,8 @@ export function ScreenshotGallery({ projectId, projectName, onClose }: Screensho
                 </>
               )}
 
-              {/* Caption */}
               {screenshots[current].caption && (
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent px-6 py-4">
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent px-5 py-4">
                   <p className="text-slate-300 text-sm">{screenshots[current].caption}</p>
                 </div>
               )}
@@ -123,18 +160,18 @@ export function ScreenshotGallery({ projectId, projectName, onClose }: Screensho
 
             {/* Thumbnails */}
             {screenshots.length > 1 && (
-              <div className="flex gap-2 p-4 overflow-x-auto border-t border-indigo-500/10"
-                style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(99,102,241,0.3) transparent' }}>
+              <div
+                className="flex gap-2 p-3 overflow-x-auto border-t border-indigo-500/10 shrink-0"
+                style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(99,102,241,0.3) transparent' }}
+              >
                 {screenshots.map((s, i) => (
                   <button
                     key={s.id}
                     onClick={() => setCurrent(i)}
                     className={`flex-shrink-0 rounded-lg overflow-hidden transition-all duration-200 ${
-                      i === current
-                        ? 'ring-2 ring-indigo-500 opacity-100'
-                        : 'opacity-40 hover:opacity-70'
+                      i === current ? 'ring-2 ring-indigo-500 opacity-100' : 'opacity-40 hover:opacity-70'
                     }`}
-                    style={{ width: 80, height: 50 }}
+                    style={{ width: 64, height: 40 }}
                     aria-label={`Ir a captura ${i + 1}`}
                   >
                     <img src={s.url} alt="" className="w-full h-full object-cover" />

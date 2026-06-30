@@ -1,3 +1,5 @@
+import { AnimateIn } from '../../../shared/components/AnimateIn'
+
 interface Job {
   id: string
   company: string
@@ -83,8 +85,9 @@ export function Experience() {
         />
 
         <div className="space-y-6">
-          {JOBS.map((job) => (
-            <div key={job.id} className="flex gap-5 sm:gap-7">
+          {JOBS.map((job, i) => (
+            <AnimateIn key={job.id} delay={i * 120}>
+            <div className="flex gap-5 sm:gap-7">
               {/* Timeline dot */}
               <div className="hidden sm:flex flex-col items-center pt-1.5 shrink-0">
                 <div className={`w-3.5 h-3.5 rounded-full border-2 ${
@@ -145,11 +148,13 @@ export function Experience() {
                 </div>
               </div>
             </div>
+            </AnimateIn>
           ))}
         </div>
       </div>
 
       {/* Education */}
+      <AnimateIn direction="fade" delay={100}>
       <div className="mt-14 grid md:grid-cols-2 gap-8">
         {/* Formal + courses */}
         <div>
@@ -183,6 +188,7 @@ export function Experience() {
           </div>
         </div>
       </div>
+      </AnimateIn>
     </section>
   )
 }

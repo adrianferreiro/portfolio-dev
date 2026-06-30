@@ -65,6 +65,8 @@ const CONTACT_ITEMS: ContactItem[] = [
   },
 ]
 
+import { AnimateIn } from '../../../shared/components/AnimateIn'
+
 export function Contact() {
   return (
     <section id="contact" className="mt-24">
@@ -76,6 +78,7 @@ export function Contact() {
         <div className="flex-1 h-px" style={{ background: 'rgba(99,102,241,0.1)' }} />
       </div>
 
+      <AnimateIn>
       <div
         className="rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center gap-10"
         style={{
@@ -124,6 +127,7 @@ export function Contact() {
           ))}
         </div>
       </div>
+      </AnimateIn>
     </section>
   )
 }

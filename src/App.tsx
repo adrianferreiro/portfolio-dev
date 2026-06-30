@@ -118,7 +118,7 @@ export default function App() {
         <Experience />
 
         {/* Flutter projects */}
-        <section id="projects">
+        <section id="projects" className="mt-24">
           <div className="flex items-center gap-4 mb-8">
             <div className="flex items-center gap-2.5 shrink-0">
               <span className="w-2 h-2 rounded-full bg-sky-400" />

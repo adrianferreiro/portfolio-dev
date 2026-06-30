@@ -11,11 +11,14 @@ interface ScreenshotGalleryProps {
 export function ScreenshotGallery({ project, onClose }: ScreenshotGalleryProps) {
   const { screenshots, loading, error } = useProjectScreenshots(project.id)
   const [current, setCurrent] = useState(0)
+  const [imgLoaded, setImgLoaded] = useState(false)
 
   const prev = useCallback(() => setCurrent(i => (i - 1 + screenshots.length) % screenshots.length), [screenshots.length])
   const next = useCallback(() => setCurrent(i => (i + 1) % screenshots.length), [screenshots.length])
 
   useEffect(() => { setCurrent(0) }, [project.id])
+
+  useEffect(() => { setImgLoaded(false) }, [current])
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -117,11 +120,18 @@ export function ScreenshotGallery({ project, onClose }: ScreenshotGalleryProps) 
           <>
             {/* Main image */}
             <div className="relative group/img bg-black/40 flex-1 min-h-0" style={{ minHeight: '300px' }}>
+              {!imgLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center img-shimmer">
+                  <Spinner size="lg" />
+                </div>
+              )}
               <img
                 key={screenshots[current].id}
                 src={screenshots[current].url}
                 alt={screenshots[current].caption ?? `Captura ${current + 1}`}
-                className="w-full h-full object-contain animate-fade-in"
+                onLoad={() => setImgLoaded(true)}
+                className={`w-full h-full object-contain transition-opacity duration-300
+                  ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
               />
 
               {screenshots.length > 1 && (

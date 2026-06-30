@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { Project } from '../../../types'
 
 interface ProjectCardProps {
@@ -32,6 +33,8 @@ function getCategoryGradient(category: string): string {
 }
 
 export function ProjectCard({ project, onSelect }: ProjectCardProps) {
+  const [thumbLoaded, setThumbLoaded] = useState(false)
+
   return (
     <button
       className="glass-card rounded-2xl text-left w-full h-full cursor-pointer overflow-hidden
@@ -44,11 +47,16 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
       {/* Thumbnail */}
       <div className="relative w-full overflow-hidden" style={{ height: '180px' }}>
         {project.thumbnail ? (
-          <img
-            src={project.thumbnail}
-            alt={`Vista previa de ${project.name}`}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
+          <>
+            {!thumbLoaded && <div className="absolute inset-0 img-shimmer" />}
+            <img
+              src={project.thumbnail}
+              alt={`Vista previa de ${project.name}`}
+              onLoad={() => setThumbLoaded(true)}
+              className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105
+                ${thumbLoaded ? 'opacity-100' : 'opacity-0'}`}
+            />
+          </>
         ) : (
           <div className={`w-full h-full bg-gradient-to-br ${getCategoryGradient(project.category)}`} />
         )}

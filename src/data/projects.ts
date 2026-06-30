@@ -1,6 +1,6 @@
-import type { Project, Screenshot, ProjectsService } from '../../types'
+import type { Project, Screenshot } from '../types'
 
-const MOCK_PROJECTS: Project[] = [
+export const PROJECTS: Project[] = [
   {
     id: 'vetado',
     name: 'Vetado',
@@ -53,7 +53,7 @@ const MOCK_PROJECTS: Project[] = [
   },
 ]
 
-const MOCK_SCREENSHOTS: Record<string, Screenshot[]> = {
+export const SCREENSHOTS: Record<string, Screenshot[]> = {
   vetado: [
     { id: 'vt-1', url: 'https://picsum.photos/seed/vetado-feed/800/1400', caption: 'Feed principal con votaciones en tiempo real' },
     { id: 'vt-2', url: 'https://picsum.photos/seed/vetado-chat/800/1400', caption: 'Chat grupal con WebSockets' },
@@ -83,18 +83,4 @@ const MOCK_SCREENSHOTS: Record<string, Screenshot[]> = {
     { id: 'af-2', url: 'https://picsum.photos/seed/analitica-dash/800/1400', caption: 'Dashboard de resultados estadísticos' },
     { id: 'af-3', url: 'https://picsum.photos/seed/analitica-maps/800/1400', caption: 'Mapa de cobertura geográfica' },
   ],
-}
-
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
-
-export class MockProjectsService implements ProjectsService {
-  async getProjects(): Promise<Project[]> {
-    await delay(600)
-    return MOCK_PROJECTS
-  }
-
-  async getProjectScreenshots(projectId: string): Promise<Screenshot[]> {
-    await delay(400)
-    return MOCK_SCREENSHOTS[projectId] ?? []
-  }
 }

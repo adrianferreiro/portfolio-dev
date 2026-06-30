@@ -2,12 +2,14 @@ import { useState } from 'react'
 import type { Project } from './types'
 import { ProjectGrid } from './features/projects/components/ProjectGrid'
 import { ScreenshotGallery } from './features/projects/components/ScreenshotGallery'
+import { Experience } from './features/experience/components/Experience'
 import { OtherTech } from './features/other-tech/components/OtherTech'
 import { Contact } from './features/contact/components/Contact'
 import { Modal } from './shared/components/Modal'
 import './App.css'
 
 const NAV_LINKS = [
+  { href: '#experience', label: 'Experiencia' },
   { href: '#projects', label: 'Proyectos' },
   { href: '#other-tech', label: 'Otras tecnologías' },
   { href: '#contact', label: 'Contacto' },
@@ -111,6 +113,9 @@ export default function App() {
             y experiencia full stack para llevar una idea de cero a producción.
           </p>
         </div>
+
+        {/* Experience */}
+        <Experience />
 
         {/* Flutter projects */}
         <section id="projects">

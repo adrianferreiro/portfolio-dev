@@ -1,3 +1,5 @@
+import { AnimateIn } from '../../../shared/components/AnimateIn'
+
 interface TechItem {
   id: string
   name: string
@@ -52,11 +54,8 @@ export function OtherTech() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
         {TECH_ITEMS.map((item, i) => (
-          <div
-            key={item.id}
-            className={`animate-slide-up glass-card rounded-xl p-5 border-t-2 ${item.border}`}
-            style={{ animationDelay: `${i * 0.07}s` }}
-          >
+          <AnimateIn key={item.id} delay={i * 70}>
+          <div className={`glass-card rounded-xl p-5 border-t-2 ${item.border}`}>
             <p className={`text-sm font-semibold font-mono mb-3 ${item.accent}`}>{item.name}</p>
             <p className="text-slate-400 text-sm leading-relaxed mb-4">{item.description}</p>
             <ul className="space-y-1">
@@ -68,6 +67,7 @@ export function OtherTech() {
               ))}
             </ul>
           </div>
+          </AnimateIn>
         ))}
       </div>
     </section>

@@ -2,6 +2,7 @@ import type { Project } from '../../../types'
 import { useProjects } from '../hooks/useProjects'
 import { ProjectCard } from './ProjectCard'
 import { Spinner } from '../../../shared/components/Spinner'
+import { AnimateIn } from '../../../shared/components/AnimateIn'
 
 interface ProjectGridProps {
   onSelectProject: (project: Project) => void
@@ -35,12 +36,9 @@ export function ProjectGrid({ onSelectProject }: ProjectGridProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
       {projects.map((project, i) => (
-        <ProjectCard
-          key={project.id}
-          project={project}
-          index={i}
-          onSelect={onSelectProject}
-        />
+        <AnimateIn key={project.id} delay={i * 80} className="h-full">
+          <ProjectCard project={project} onSelect={onSelectProject} />
+        </AnimateIn>
       ))}
     </div>
   )

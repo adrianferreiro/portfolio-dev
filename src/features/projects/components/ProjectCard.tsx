@@ -2,7 +2,6 @@ import type { Project } from '../../../types'
 
 interface ProjectCardProps {
   project: Project
-  index: number
   onSelect: (project: Project) => void
 }
 
@@ -32,15 +31,14 @@ function getCategoryGradient(category: string): string {
   return key ? categoryGradients[key] : 'from-indigo-900/60 to-indigo-950/80'
 }
 
-export function ProjectCard({ project, index, onSelect }: ProjectCardProps) {
+export function ProjectCard({ project, onSelect }: ProjectCardProps) {
   return (
     <button
-      className="glass-card animate-slide-up rounded-2xl text-left w-full cursor-pointer overflow-hidden
+      className="glass-card rounded-2xl text-left w-full h-full cursor-pointer overflow-hidden
         transition-all duration-300 ease-out group
         hover:-translate-y-2 hover:border-indigo-500/30
         hover:shadow-[0_20px_40px_rgba(99,102,241,0.15)]
         focus-visible:outline-2 focus-visible:outline-indigo-500 focus-visible:outline-offset-2"
-      style={{ animationDelay: `${index * 0.08}s` }}
       onClick={() => onSelect(project)}
     >
       {/* Thumbnail */}

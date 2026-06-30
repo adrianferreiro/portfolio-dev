@@ -3,6 +3,7 @@ import type { Project } from './types'
 import { ProjectGrid } from './features/projects/components/ProjectGrid'
 import { ScreenshotGallery } from './features/projects/components/ScreenshotGallery'
 import { OtherTech } from './features/other-tech/components/OtherTech'
+import { Contact } from './features/contact/components/Contact'
 import { Modal } from './shared/components/Modal'
 import './App.css'
 
@@ -30,6 +31,7 @@ export default function App() {
           <nav className="flex gap-6 text-sm text-slate-400">
             <a href="#projects" className="hover:text-slate-200 transition-colors">Proyectos</a>
             <a href="#other-tech" className="hover:text-slate-200 transition-colors">Otras tecnologías</a>
+            <a href="#contact" className="hover:text-slate-200 transition-colors">Contacto</a>
           </nav>
         </div>
       </header>
@@ -72,7 +74,17 @@ export default function App() {
 
         {/* Other tech */}
         <OtherTech />
+
+        {/* Contact */}
+        <Contact />
       </main>
+
+      <footer className="relative border-t border-indigo-500/10">
+        <div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+          <p className="text-slate-600 text-sm">© {new Date().getFullYear()} Adrian Ferreiro</p>
+          <p className="text-slate-700 text-xs font-mono">Flutter Developer · Full Stack</p>
+        </div>
+      </footer>
 
       {/* Screenshot modal */}
       {selectedProject && (

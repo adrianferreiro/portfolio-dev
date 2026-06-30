@@ -27,11 +27,17 @@ export default function App() {
               {'<'}<span className="text-indigo-400">Dev</span>{' />'}
             </h1>
             <p className="text-slate-500 text-sm mt-0.5">Full Stack Developer</p>
+            
+          </div>
+          <div className="text-slate-200 text-lg font-semibold mt-0.5">
+            Adrian Ferreiro
           </div>
           <nav className="flex gap-6 text-sm text-slate-400">
             <a href="#projects" className="hover:text-slate-200 transition-colors">Proyectos</a>
           </nav>
+          
         </div>
+
       </header>
 
       <main className="relative max-w-6xl mx-auto px-6 py-16">

@@ -9,6 +9,7 @@ const MOCK_PROJECTS: Project[] = [
     tech: ['React', 'Node.js', 'PostgreSQL', 'Chart.js', 'Redis'],
     category: 'SaaS · Finanzas',
     year: 2024,
+    thumbnail: 'https://picsum.photos/seed/fintrack-thumb/800/450',
   },
   {
     id: 'shopwave',
@@ -18,6 +19,7 @@ const MOCK_PROJECTS: Project[] = [
     tech: ['Next.js', 'Stripe', 'MongoDB', 'Redis', 'Docker'],
     category: 'E-Commerce',
     year: 2024,
+    thumbnail: 'https://picsum.photos/seed/shopwave-thumb/800/450',
   },
   {
     id: 'taskflow',
@@ -27,6 +29,7 @@ const MOCK_PROJECTS: Project[] = [
     tech: ['Vue.js', 'FastAPI', 'PostgreSQL', 'WebSocket', 'Celery'],
     category: 'SaaS · Productividad',
     year: 2023,
+    thumbnail: 'https://picsum.photos/seed/taskflow-thumb/800/450',
   },
   {
     id: 'mediconnect',
@@ -36,6 +39,7 @@ const MOCK_PROJECTS: Project[] = [
     tech: ['React Native', 'Express', 'MySQL', 'WebRTC', 'AWS S3'],
     category: 'HealthTech · Mobile',
     year: 2023,
+    thumbnail: 'https://picsum.photos/seed/mediconnect-thumb/800/450',
   },
   {
     id: 'devmetrics',
@@ -45,6 +49,7 @@ const MOCK_PROJECTS: Project[] = [
     tech: ['React', 'D3.js', 'Python', 'FastAPI', 'Docker', 'Go'],
     category: 'DevTools',
     year: 2024,
+    thumbnail: 'https://picsum.photos/seed/devmetrics-thumb/800/450',
   },
   {
     id: 'cryptowatch',
@@ -54,6 +59,7 @@ const MOCK_PROJECTS: Project[] = [
     tech: ['React', 'Go', 'WebSocket', 'TimescaleDB', 'Redis'],
     category: 'FinTech · Trading',
     year: 2024,
+    thumbnail: 'https://picsum.photos/seed/cryptowatch-thumb/800/450',
   },
 ]
 

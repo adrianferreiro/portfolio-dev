@@ -5,6 +5,7 @@ export interface Project {
   tech: string[]
   category: string
   year: number
+  thumbnail?: string
 }
 
 export interface Screenshot {

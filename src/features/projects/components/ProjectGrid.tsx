@@ -37,7 +37,7 @@ export function ProjectGrid({ onSelectProject }: ProjectGridProps) {
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
       {projects.map((project, i) => (
         <AnimateIn key={project.id} delay={i * 80} className="h-full">
-          <ProjectCard project={project} index={i} onSelect={onSelectProject} />
+          <ProjectCard project={project} onSelect={onSelectProject} />
         </AnimateIn>
       ))}
     </div>

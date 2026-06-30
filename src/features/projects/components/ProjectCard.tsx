@@ -2,7 +2,6 @@ import type { Project } from '../../../types'
 
 interface ProjectCardProps {
   project: Project
-  index?: number
   onSelect: (project: Project) => void
 }
 
@@ -32,7 +31,7 @@ function getCategoryGradient(category: string): string {
   return key ? categoryGradients[key] : 'from-indigo-900/60 to-indigo-950/80'
 }
 
-export function ProjectCard({ project, index, onSelect }: ProjectCardProps) {
+export function ProjectCard({ project, onSelect }: ProjectCardProps) {
   return (
     <button
       className="glass-card rounded-2xl text-left w-full h-full cursor-pointer overflow-hidden

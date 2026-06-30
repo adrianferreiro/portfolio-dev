@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Env files — ningún .env va al repo, todo pasa por GitHub Actions
+.env
+.env.*
+.env.local
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

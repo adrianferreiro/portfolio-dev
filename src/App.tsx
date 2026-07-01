@@ -95,22 +95,21 @@ export default function App() {
         <div className="mb-16 animate-slide-up">
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <span className="text-xs font-mono font-medium px-3 py-1 rounded-full border text-sky-400 bg-sky-400/10 border-sky-400/20">
-              Flutter Developer
+              Flutter Developer · Full Stack
             </span>
             <span className="text-slate-600 text-sm">iOS · Android · Cross-platform</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-100 leading-tight mb-5">
-            Apps mobile que combinan<br />
+            Soluciones móviles escalables<br />
             <span
               className="text-transparent bg-clip-text"
               style={{ backgroundImage: 'linear-gradient(135deg, #38bdf8, #818cf8)' }}
             >
-              diseño y rendimiento
+              con Flutter
             </span>
           </h2>
           <p className="text-slate-400 text-base sm:text-lg max-w-xl leading-relaxed">
-            Desarrollo aplicaciones Flutter para iOS y Android, con backends en Laravel y Node.js,
-            y experiencia full stack para llevar una idea de cero a producción.
+            Especialista en arquitectura Full Stack y Flutter, dedicado a convertir conceptos complejos en experiencias móviles rápidas, estables y listas para producción.
           </p>
         </div>
 

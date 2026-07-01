@@ -8,7 +8,7 @@ interface Job {
   period: string
   current?: boolean
   type: string
-  description: string
+  description: string 
   tech: string[]
   highlights: string[]
 }
@@ -23,7 +23,7 @@ const JOBS: Job[] = [
     type: 'Software Factory · Fintech',
     description:
       'Desarrollo mobile en una Software Factory prestando servicios para el ecosistema financiero de CrediClub. Colaboración remota en entorno internacional.',
-    tech: ['Flutter', 'Dart', 'Clean Architecture', 'SOLID', 'Scrum', 'Jira', 'Fastlane'],
+    tech: ['Flutter', 'Dart', 'Clean Architecture', 'SOLID', 'Scrum', 'Kanban', 'Jira', 'Azure', 'Fastlane'],
     highlights: [
       'Desarrollo de flujos críticos de gestión de tarjetas de crédito/débito (físicas y digitales).',
       'Implementación de autenticación OTP y módulos de transferencias bancarias.',

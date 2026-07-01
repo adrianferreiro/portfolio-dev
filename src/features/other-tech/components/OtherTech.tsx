@@ -15,7 +15,7 @@ const TECH_ITEMS: TechItem[] = [
     name: 'Laravel · PHP',
     accent: 'text-rose-400',
     border: 'border-rose-500/20',
-    description: 'APIs REST, paneles administrativos y sistemas backend con autenticación, queues, jobs y Eloquent ORM.',
+    description: 'APIs REST, paneles administrativos y sistemas backend con autenticación, y Eloquent ORM.',
     projects: ['API REST para apps móviles', 'Panel de administración SaaS', 'Sistema de facturación'],
   },
   {
@@ -24,23 +24,23 @@ const TECH_ITEMS: TechItem[] = [
     accent: 'text-sky-400',
     border: 'border-sky-500/20',
     description: 'SPAs y dashboards web modernos. Este mismo portfolio está construido con React + Vite + Tailwind.',
-    projects: ['Este portfolio', 'Dashboard de analytics', 'App de gestión interna'],
+    projects: ['Plataforma de solicitud de tarjetas de crédito', 'Este portfolio', 'App de gestión interna'],
   },
   {
     id: 'nodejs',
     name: 'Node.js · Express',
     accent: 'text-emerald-400',
     border: 'border-emerald-500/20',
-    description: 'Backends y microservicios, APIs en tiempo real con WebSocket y servicios de integración para apps Flutter.',
+    description: 'Backends, APIs en tiempo real con WebSocket y servicios de integración para apps Flutter.',
     projects: ['WebSocket server de chat', 'API de notificaciones push', 'Servicio de pagos'],
   },
   {
     id: 'sql',
-    name: 'PostgreSQL · MySQL',
+    name: 'MySQL',
     accent: 'text-amber-400',
     border: 'border-amber-500/20',
     description: 'Modelado de bases de datos relacionales, migraciones, optimización de queries y diseño de esquemas.',
-    projects: ['Esquema multi-tenant', 'Migración de base legacy', 'Índices y query tuning'],
+    projects: ['Modelado', 'Optimización', 'Migraciones'],
   },
 ]
 

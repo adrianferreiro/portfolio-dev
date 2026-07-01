@@ -25,7 +25,7 @@ export function Modal({ onClose, children }: ModalProps) {
       onClick={onClose}
     >
       <div
-        className="w-full max-w-6xl max-h-[90vh] animate-scale-in overflow-hidden"
+        className="w-full max-w-6xl max-h-[90vh] animate-scale-in overflow-y-auto md:overflow-hidden"
         onClick={e => e.stopPropagation()}
       >
         {children}

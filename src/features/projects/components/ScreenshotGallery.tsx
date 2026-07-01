@@ -31,7 +31,7 @@ export function ScreenshotGallery({ project, onClose }: ScreenshotGalleryProps) 
 
   return (
     <div
-      className="flex flex-col md:flex-row rounded-2xl overflow-hidden max-h-[90vh]"
+      className="flex flex-col md:flex-row rounded-2xl overflow-y-auto md:overflow-hidden max-h-[90vh]"
       style={{ background: 'rgba(8, 10, 30, 0.97)', border: '1px solid rgba(129, 140, 248, 0.2)' }}
     >
       {/* ── Left panel: project info ── */}

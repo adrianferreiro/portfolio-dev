@@ -8,13 +8,13 @@ Portfolio personal de **Flutter Developer & Full Stack**, construido con React +
 
 ## Secciones
 
-| Sección | Descripción |
-|---|---|
-| **Hero** | Presentación con énfasis en desarrollo Flutter / iOS & Android |
-| **Experiencia** | Timeline laboral con logros, tecnologías y roles actuales |
-| **Proyectos Flutter** | Grid de apps publicadas con galería de capturas por proyecto |
-| **También trabajo con** | Laravel, React/TS, Node.js, PostgreSQL/MySQL |
-| **Contacto** | Email, WhatsApp, LinkedIn, GitHub |
+| Sección                 | Descripción                                                    |
+| ----------------------- | -------------------------------------------------------------- |
+| **Hero**                | Presentación con énfasis en desarrollo Flutter / iOS & Android |
+| **Experiencia**         | Timeline laboral con logros, tecnologías y roles actuales      |
+| **Proyectos Flutter**   | Grid de apps publicadas con galería de capturas por proyecto   |
+| **También trabajo con** | Laravel, React/TS, Node.js, MySQL                              |
+| **Contacto**            | Email, WhatsApp, LinkedIn, GitHub                              |
 
 ## Stack técnico
 
@@ -60,11 +60,11 @@ PR a main       →  Build & Type Check  →  ✅ / ❌
 
 El workflow está en `.github/workflows/ci-cd.yml`. El deploy usa `SamKirkland/FTP-Deploy-Action` y requiere estos secrets en el repo:
 
-| Secret | Descripción |
-|---|---|
-| `FTP_SERVER` | Host FTP de Hostinger |
-| `FTP_USERNAME` | Usuario FTP |
-| `FTP_PASSWORD` | Contraseña FTP |
+| Secret           | Descripción                   |
+| ---------------- | ----------------------------- |
+| `FTP_SERVER`     | Host FTP de Hostinger         |
+| `FTP_USERNAME`   | Usuario FTP                   |
+| `FTP_PASSWORD`   | Contraseña FTP                |
 | `FTP_SERVER_DIR` | Ruta en el servidor (ej: `/`) |
 
 ## Agregar un proyecto
